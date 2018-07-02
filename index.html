@@ -81,6 +81,21 @@
       var card1 = set[23];
       card1.isFaceUp = true;
       $("#card1").html(card1.getDisplayName());
+      
+
+      // シャッフルする
+      console.log("shuffle!");
+      var shuffle = function() {
+    	  var n = set.length, t, i;
+    	  while (n) {
+    		    i = Math.floor(Math.random() * n--);
+    		    t = set[n];
+    		    set[n] = set[i];
+    		    set[i] = t;
+    		  }
+      };
+      shuffle();
+      
   });
 </script>
 
