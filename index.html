@@ -77,11 +77,6 @@
 	  new Card('♣️', 12),
 	  new Card('♣️', 13),
 		   ];
-      
-      var card1 = set[23];
-      card1.isFaceUp = true;
-      $("#card1").html(card1.getDisplayName());
-      
 
       // シャッフルする
       console.log("shuffle!");
@@ -96,6 +91,18 @@
       };
       shuffle();
       
+      
+      var card1 = set[23];
+      $("#card1").html(card1.getDisplayName());
+      
+      
+      // クリックでひっくりかえす
+      $(".nav-link").click(function(){
+    	  var id =  $(this).attr("id");
+    	  card1.isFaceUp = ! card1.isFaceUp;
+          $("#"+id).html(card1.getDisplayName());
+      });
+      
   });
 </script>
 
@@ -106,12 +113,12 @@
 
 <ul class="nav">
   <li class="nav-item" style="border:solid black;margin:2px;">
-    <a class="nav-link active" href="#" id="card1"></a>
+    <a class="nav-link" href="#" id="card1"></a>
   </li>
 
 
   <li class="nav-item" style="border:solid black;margin:2px;">
-    <a class="nav-link active" href="#">❤️1</a>
+    <a class="nav-link" href="#">❤️1</a>
   </li>
 
 </ul>
