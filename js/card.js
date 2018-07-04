@@ -1,7 +1,8 @@
+// Card.js
 // カード1枚についてのクラスとコンストラクタ
 Card = function(mark, number, isFaceUp) {
-  this.mark = mark;
-  this.number = number;
+    this.mark = mark;
+    this.number = number;
     this.isFaceUp = isFaceUp;
 };
 
@@ -14,9 +15,8 @@ Card.prototype.getDisplayName = function() {
     }
   
 };
-
-
-
-Card.prototype.sayHello = function() {
-  console.log('<p>' + this.getDisplayName() + '</p>');
+Card.prototype.turn = function() {
+    this.isFaceUp = !this.isFaceUp;
 };
+
+

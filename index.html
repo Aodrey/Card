@@ -18,92 +18,11 @@
 
   
 <!-- トランプ -->
-<script src="js/card.js"></script>
+<script src="js/Card.js"></script>
+<script src="js/Set.js"></script>
+<script src="js/index.js"></script>
 <script>
-  $(document).ready(function(){
 
-      var set = [
-	  new Card('❤️', 1),
-	  new Card('❤️', 2),
-	  new Card('❤️', 3),
-	  new Card('❤️', 4),
-	  new Card('❤️', 5),
-	  new Card('❤️', 6),
-	  new Card('❤️', 7),
-	  new Card('❤️', 8),
-	  new Card('❤️', 9),
-	  new Card('❤️', 10),
-	  new Card('❤️', 11),
-	  new Card('❤️', 12),
-	  new Card('❤️', 13),
-	  new Card('♠️', 1),
-	  new Card('♠️', 2),
-	  new Card('♠️', 3),
-	  new Card('♠️', 4),
-	  new Card('♠️', 5),
-	  new Card('♠️', 6),
-	  new Card('♠️', 7),
-	  new Card('♠️', 8),
-	  new Card('♠️', 9),
-	  new Card('♠️', 10),
-	  new Card('♠️', 11),
-	  new Card('♠️', 12),
-	  new Card('♠️', 13),
-	  new Card('♦️', 1),
-	  new Card('♦️', 2),
-	  new Card('♦️', 3),
-	  new Card('♦️', 4),
-	  new Card('♦️', 5),
-	  new Card('♦️', 6),
-	  new Card('♦️', 7),
-	  new Card('♦️', 8),
-	  new Card('♦️', 9),
-	  new Card('♦️', 10),
-	  new Card('♦️', 11),
-	  new Card('♦️', 12),
-	  new Card('♦️', 13),
-	  new Card('♠️', 13),
-	  new Card('♣️', 1),
-	  new Card('♣️', 2),
-	  new Card('♣️', 3),
-	  new Card('♣️', 4),
-	  new Card('♣️', 5),
-	  new Card('♣️', 6),
-	  new Card('♣️', 7),
-	  new Card('♣️', 8),
-	  new Card('♣️', 9),
-	  new Card('♣️', 10),
-	  new Card('♣️', 11),
-	  new Card('♣️', 12),
-	  new Card('♣️', 13),
-		   ];
-
-      // シャッフルする
-      console.log("shuffle!");
-      var shuffle = function() {
-    	  var n = set.length, t, i;
-    	  while (n) {
-    		    i = Math.floor(Math.random() * n--);
-    		    t = set[n];
-    		    set[n] = set[i];
-    		    set[i] = t;
-    		  }
-      };
-      shuffle();
-      
-      
-      var card1 = set[23];
-      $("#card1").html(card1.getDisplayName());
-      
-      
-      // クリックでひっくりかえす
-      $(".nav-link").click(function(){
-    	  var id =  $(this).attr("id");
-    	  card1.isFaceUp = ! card1.isFaceUp;
-          $("#"+id).html(card1.getDisplayName());
-      });
-      
-  });
 </script>
 
 </head>
@@ -111,17 +30,20 @@
 
 
 
-<ul class="nav">
-  <li class="nav-item" style="border:solid black;margin:2px;">
-    <a class="nav-link" href="#" id="card1"></a>
-  </li>
+  <ul class="nav">
+    <script>
+      // カードを1セット作成
+      var set = new Set();
+      
+     for (var i = 0; i < set.array.length; i++){
+	  document.write("<li class='nav-item' style='border:solid black;margin:2px;'><a class='nav-link' href='#' id='card"+i+"'></a></li>");
+      }
 
-
-  <li class="nav-item" style="border:solid black;margin:2px;">
-    <a class="nav-link" href="#">❤️1</a>
-  </li>
-
-</ul>
+    </script>
+ 
+   
+  
+  </ul>
 
 </body>
 </html>
