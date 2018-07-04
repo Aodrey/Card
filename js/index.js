@@ -8,7 +8,7 @@ $(document).ready(function(){
     }
           
     // クリックでひっくりかえす
-    $(".nav-link").click(function(){
+    $(".turn").click(function(){
     	var id =  $(this).attr("id");
 	var i = id.slice(4); // "card52" から "52" を取り出す
     	set.array[i].isFaceUp = ! set.array[i].isFaceUp;

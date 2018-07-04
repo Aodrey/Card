@@ -35,8 +35,9 @@
       // カードを1セット作成
       var set = new Set();
       
-     for (var i = 0; i < set.array.length; i++){
-	  document.write("<li class='nav-item' style='border:solid black;margin:2px;'><a class='nav-link' href='#' id='card"+i+"'></a></li>");
+      for (var i = 0; i < set.array.length; i++){
+	  document.write("<div class='card' style='width: 6rem;'><div class='card-body'><a class='turn' href='#' id='card"+i+"'></a></div></div>");
+	  // document.write("<li class='nav-item' style='border:solid black;margin:2px;'><a class='nav-link' href='#' id='card"+i+"'></a></li>");
       }
 
     </script>
