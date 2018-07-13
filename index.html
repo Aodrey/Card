@@ -19,7 +19,7 @@
   
 <!-- カードに関する -->
 <script src="js/Card.js"></script>
-<script src="js/Set.js"></script>
+<script src="js/Deck.js"></script>
 <script src="js/index.js"></script>
 <script>
 
@@ -29,14 +29,146 @@
 <body>
 
     <script>
-      // カードを1セット作成
-      var set = new Set();
-      
-      for (var i = 0; i < set.array.length; i++){
-	  document.write("<a class='turn' href='#' id='card"+i+"'><img src='img/cards/downturned.png' /></a>");
-      }
-
+        newGame();
     </script>
+    
+<div class="container">
+  <div class="row">
+    <div class="col">
+        <a id='stock_downturned' href='#'>
+            <img src='img/cards/downturned.png' class="img-fluid shadow-sm bg-white rounded" />
+        </a>
+    </div>
+    <div class="col">
+        <a id='stock_upturned' href='#'>
+            <img src='img/cards/empty.png' class="img-fluid shadow-sm bg-white rounded" />
+        </a>
+    </div>
+    <div class="col">
+      
+    </div>
+    <div class="col">
+        <a class='foundation1' href='#'>
+            <img src='img/cards/empty.png' class="img-fluid shadow-sm bg-white rounded" />
+        </a>
+    </div>
+    <div class="col">
+        <a class='foundation2' href='#'>
+            <img src='img/cards/empty.png' class="img-fluid shadow-sm bg-white rounded" />
+        </a>
+    </div>
+    <div class="col">
+        <a class='foundation3' href='#'>
+            <img src='img/cards/empty.png' class="img-fluid shadow-sm bg-white rounded" />
+        </a>
+    </div>
+    <div class="col">
+        <a class='foundation4' href='#'>
+            <img src='img/cards/empty.png' class="img-fluid shadow-sm bg-white rounded" />
+        </a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col" id="pile0">
+        <a class='0' href='#'>
+            <img src='img/cards/downturned.png' class="img-fluid shadow-sm bg-white rounded" />
+        </a>
+    </div>
+    <div class="col" id="pile1">
+        <a class='1' href='#'>
+            <img src='img/cards/downturned.png' class="img-fluid shadow-sm bg-white rounded" />
+        </a>
+        <a class='0' href='#'>
+            <img src='img/cards/downturned.png' class="img-fluid shadow-sm rounded" />
+        </a>
+    </div>
+    <div class="col" id="pile2">
+        <a class='2' href='#'>
+            <img src='img/cards/downturned.png' class="img-fluid shadow-sm bg-white rounded" />
+        </a>
+        <a class='1' href='#'>
+            <img src='img/cards/downturned.png' class="img-fluid shadow-sm bg-white rounded" />
+        </a>
+        <a class='0' href='#'>
+            <img src='img/cards/downturned.png' class="img-fluid shadow-sm rounded" />
+        </a>
+    </div>
+    <div class="col" id="pile3">
+        <a class='3' href='#'>
+            <img src='img/cards/downturned.png' class="img-fluid shadow-sm bg-white rounded" />
+        </a>
+        <a class='2' href='#'>
+            <img src='img/cards/downturned.png' class="img-fluid shadow-sm bg-white rounded" />
+        </a>
+        <a class='1' href='#'>
+            <img src='img/cards/downturned.png' class="img-fluid shadow-sm bg-white rounded" />
+        </a>
+        <a class='0' href='#'>
+            <img src='img/cards/downturned.png' class="img-fluid shadow-sm rounded" />
+        </a>
+    </div>
+    <div class="col" id="pile4">
+        <a class='4' href='#'>
+            <img src='img/cards/downturned.png' class="img-fluid shadow-sm bg-white rounded" />
+        </a>
+        <a class='3' href='#'>
+            <img src='img/cards/downturned.png' class="img-fluid shadow-sm bg-white rounded" />
+        </a>
+        <a class='2' href='#'>
+            <img src='img/cards/downturned.png' class="img-fluid shadow-sm bg-white rounded" />
+        </a>
+        <a class='1' href='#'>
+            <img src='img/cards/downturned.png' class="img-fluid shadow-sm bg-white rounded" />
+        </a>
+        <a class='0' href='#'>
+            <img src='img/cards/downturned.png' class="img-fluid shadow-sm rounded" />
+        </a>
+    </div>
+    <div class="col" id="pile5">
+         <a class='5' href='#'>
+            <img src='img/cards/downturned.png' class="img-fluid shadow-sm bg-white rounded" />
+        </a>
+        <a class='4' href='#'>
+            <img src='img/cards/downturned.png' class="img-fluid shadow-sm bg-white rounded" />
+        </a>
+        <a class='3' href='#'>
+            <img src='img/cards/downturned.png' class="img-fluid shadow-sm bg-white rounded" />
+        </a>
+        <a class='2' href='#'>
+            <img src='img/cards/downturned.png' class="img-fluid shadow-sm bg-white rounded" />
+        </a>
+        <a class='1' href='#'>
+            <img src='img/cards/downturned.png' class="img-fluid shadow-sm bg-white rounded" />
+        </a>
+        <a class='0' href='#'>
+            <img src='img/cards/downturned.png' class="img-fluid shadow-sm rounded" />
+        </a>
+    </div>
+    <div class="col" id="pile6">
+        <a class='6' href='#'>
+            <img src='img/cards/downturned.png' class="img-fluid shadow-sm bg-white rounded" />
+        </a>
+        <a class='5' href='#'>
+            <img src='img/cards/downturned.png' class="img-fluid shadow-sm bg-white rounded" />
+        </a>
+        <a class='4' href='#'>
+            <img src='img/cards/downturned.png' class="img-fluid shadow-sm bg-white rounded" />
+        </a>
+        <a class='3' href='#'>
+            <img src='img/cards/downturned.png' class="img-fluid shadow-sm bg-white rounded" />
+        </a>
+        <a class='2' href='#'>
+            <img src='img/cards/downturned.png' class="img-fluid shadow-sm bg-white rounded" />
+        </a>
+        <a class='1' href='#'>
+            <img src='img/cards/downturned.png' class="img-fluid shadow-sm bg-white rounded" />
+        </a>
+        <a class='0' href='#'>
+            <img src='img/cards/downturned.png' class="img-fluid shadow-sm rounded" />
+        </a>
+    </div>
+  </div>
+</div>
 
 
 </body>

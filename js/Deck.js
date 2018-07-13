@@ -1,7 +1,7 @@
-//Set.js
+//Deck.js
 
 // コンストラクタ
-Set = function() {
+Deck = function() {
     // カードを作成
     this.array = [
 	new Card('h', 1),
@@ -59,7 +59,9 @@ Set = function() {
 	new Card('c', 13),
     ];
 };
-Set.prototype.shuffle = function() {
+
+// シャッフル
+Deck.prototype.shuffle = function() {
     var n = this.array.length, t, i;
     while (n) {
     	i = Math.floor(Math.random() * n--);
@@ -67,5 +69,27 @@ Set.prototype.shuffle = function() {
     	this.array[n] = this.array[i];
     	this.array[i] = t;
     }
+};
+// index指定で表示画像取得
+Deck.prototype.getDisplayImage = function(index) {
+    if (index == undefined) {
+        return "img/cards/empty.png";
+    }
+    if (this.array[index].isFaceUp) {
+        // ゼロパディング
+        var n = ( '00' + this.array[index].number ).slice( -2 );
+        return "img/cards/" + this.array[index].mark + n + ".png";
+    } else {
+        return "img/cards/downturned.png";
+    }
+};
+
+// indexの配列の範囲でカードを裏返し、配列も逆順にする
+Deck.prototype.turn = function(indexes) {
+    for (var i = 0; i < Object.keys(indexes).length; i++){
+        this.array[indexes[i]].isFaceUp = !this.array[indexes[i]].isFaceUp;
+    }
+    indexes.reverse();
+    
 };
 
