@@ -15,6 +15,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
+    <!-- jQuery UI https://code.jquery.com/ui/ -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
   
     <!-- カードに関する -->
     <script src="js/Card.js"></script>
@@ -36,37 +39,25 @@
 <div class="container base">
   <div class="row">
     <div class="col">
-        <a id='stock_downturned' href='#'>
-            <img src='img/cards/downturned.png' class="img-fluid shadow-sm bg-white rounded" />
-        </a>
+        <img id='stock_downturned' src='img/cards/downturned.png' class="img-fluid shadow-sm bg-white rounded" />
     </div>
-    <div class="col">
-        <a id='stock_upturned' href='#'>
-            <img src='img/cards/empty.png' class="img-fluid shadow-sm bg-white rounded" />
-        </a>
+    <div class="col draggable">
+        <img id='stock_upturned' src='img/cards/empty.png' class="img-fluid shadow-sm bg-white rounded" />
     </div>
     <div class="col">
       
     </div>
-    <div class="col">
-        <a class='foundation1' href='#'>
-            <img src='img/cards/empty.png' class="img-fluid shadow-sm bg-white rounded" />
-        </a>
+    <div class="col droppable">
+        <img src='img/cards/empty.png' class="foundation1 img-fluid shadow-sm bg-white rounded" />
     </div>
-    <div class="col">
-        <a class='foundation2' href='#'>
-            <img src='img/cards/empty.png' class="img-fluid shadow-sm bg-white rounded" />
-        </a>
+    <div class="col droppable">
+        <img src='img/cards/empty.png' class="foundation2 img-fluid shadow-sm bg-white rounded" />
     </div>
-    <div class="col">
-        <a class='foundation3' href='#'>
-            <img src='img/cards/empty.png' class="img-fluid shadow-sm bg-white rounded" />
-        </a>
+    <div class="col droppable">
+        <img src='img/cards/empty.png' class="foundation3 img-fluid shadow-sm bg-white rounded" />
     </div>
-    <div class="col">
-        <a class='foundation4' href='#'>
-            <img src='img/cards/empty.png' class="img-fluid shadow-sm bg-white rounded" />
-        </a>
+    <div class="col droppable">
+        <img src='img/cards/empty.png' class="foundation4 img-fluid shadow-sm bg-white rounded" />
     </div>
   </div>
 </div>

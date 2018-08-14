@@ -1,4 +1,7 @@
 /* index.css */
+div.base>div.row>div.col>img#stock_upturned {
+    z-index: 9999;
+}
 
 div.pile>div.row>div.col {
     position:relative;
@@ -73,6 +76,6 @@ div.pile #pile6>a:nth-child(7) {
     position:absolute;
     top:180%;
 }
-div.container a:hover img {
+img#stock_upturned:hover {
     opacity: 0.2;
 }

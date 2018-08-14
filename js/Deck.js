@@ -90,6 +90,15 @@ Deck.prototype.turn = function(indexes) {
         this.array[indexes[i]].isFaceUp = !this.array[indexes[i]].isFaceUp;
     }
     indexes.reverse();
-    
+};
+
+// 2枚のカードを比較する：同じマークで続きの数か
+Deck.prototype.isMarkSameNumberNext = function(a, b) {
+    if (this.array[a].mark == this.array[b].mark) {
+        if (this.array[a].number++ == this.array[b].number) {
+            return true;
+        }
+    }
+    return false;
 };
 

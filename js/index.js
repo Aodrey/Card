@@ -44,8 +44,10 @@ var newGame = function() {
 
 // 初期表示後の操作
 $(document).ready(function(){
+    var isDropped = false;  // ドロップが成功したことを示すフラグ
+    
     // 初期表示
-    $("#stock_downturned img").attr("src",deck.getDisplayImage(stock_downturned[0]));
+    $("#stock_downturned").attr("src",deck.getDisplayImage(stock_downturned[0]));
     
     // 先頭だけ表に返す
     deck.array[pile[0][0]].isFaceUp = true;
@@ -82,7 +84,38 @@ $(document).ready(function(){
         }
 
         // 表示
-        $('#stock_downturned img').attr('src',deck.getDisplayImage(stock_downturned[0]));
-        $('#stock_upturned img').attr('src',deck.getDisplayImage(stock_upturned[0]));
+        $('#stock_downturned').attr('src',deck.getDisplayImage(stock_downturned[0]));
+        $('#stock_upturned').attr('src',deck.getDisplayImage(stock_upturned[0]));
+    });
+    
+    // ドラッグ・ドロップ
+    $( ".draggable" ).draggable( {
+        stack:'.draggable', // ドラッグ中は最前面に表示
+        zIndex:10,// ドラッグ中は最前面に表示
+        revert:true,// 基本元の位置に戻る
+        revert: function(event, ui){
+            console.log("revertDuration="+$( ".draggable" ).draggable( "option", "revertDuration" ));
+            console.log("isDropped="+isDropped);
+            if (isDropped) {
+                // ドロップが成功している場合はアニメーションしない
+                $( ".draggable" ).draggable( "option", "revertDuration", 0 );
+                isDropped = false;
+            } else {
+                $( ".draggable" ).draggable( "option", "revertDuration", 500 );
+            }
+            return true;
+        }
+    } );
+    $( ".droppable" ).droppable({
+        drop: function( event, ui ) {
+            
+            isDropped = true;  // ドロップが成功したことを示すフラグ
+            // ドラッグした画像にする
+            $(this).find("img").attr('src', deck.getDisplayImage(stock_upturned[0]));
+            // 山から1枚減らす
+            stock_upturned.shift();
+            // 再表示
+            $('#stock_upturned').attr('src',deck.getDisplayImage(stock_upturned[0]));
+        }
     });
 });
