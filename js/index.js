@@ -51,17 +51,17 @@ $(document).ready(function(){
     
     // 先頭だけ表に返す
     deck.array[pile[0][0]].isFaceUp = true;
-    deck.array[pile[1][0]].isFaceUp = true;
-    deck.array[pile[2][0]].isFaceUp = true;
-    deck.array[pile[3][0]].isFaceUp = true;
-    deck.array[pile[4][0]].isFaceUp = true;
-    deck.array[pile[5][0]].isFaceUp = true;
-    deck.array[pile[6][0]].isFaceUp = true;
+    deck.array[pile[1][1]].isFaceUp = true;
+    deck.array[pile[2][2]].isFaceUp = true;
+    deck.array[pile[3][3]].isFaceUp = true;
+    deck.array[pile[4][4]].isFaceUp = true;
+    deck.array[pile[5][5]].isFaceUp = true;
+    deck.array[pile[6][6]].isFaceUp = true;
     
     for (var i = 0; i < 7; i++){
         var pilei = pile[i];
         var pileilength = Object.keys(pilei).length;
-        for (var j = pileilength-1; j >= 0; j--){
+        for (var j = 0; j < pileilength; j++){
             if (pilei[j] != undefined) {
                 $('#pile'+i+' a.'+j+' img').attr('src',deck.getDisplayImage(pilei[j]));  
             }
@@ -94,8 +94,6 @@ $(document).ready(function(){
         zIndex:10,// ドラッグ中は最前面に表示
         revert:true,// 基本元の位置に戻る
         revert: function(event, ui){
-            console.log("revertDuration="+$( ".draggable" ).draggable( "option", "revertDuration" ));
-            console.log("isDropped="+isDropped);
             if (isDropped) {
                 // ドロップが成功している場合はアニメーションしない
                 $( ".draggable" ).draggable( "option", "revertDuration", 0 );
@@ -106,7 +104,7 @@ $(document).ready(function(){
             return true;
         }
     } );
-    $( ".droppable" ).droppable({
+    $( ".base .droppable" ).droppable({
         drop: function( event, ui ) {
             
             isDropped = true;  // ドロップが成功したことを示すフラグ
@@ -116,6 +114,31 @@ $(document).ready(function(){
             stock_upturned.shift();
             // 再表示
             $('#stock_upturned').attr('src',deck.getDisplayImage(stock_upturned[0]));
+        }
+    });
+    $( ".pile .droppable" ).droppable({
+        drop: function( event, ui ) {
+
+            isDropped = true;  // ドロップが成功したことを示すフラグ
+            
+            // 追加するクラス名を取得（最初に指定したクラス名を数値として取得）
+            var cls = Number($(this).attr('class').split(' ')[0]);
+            cls++;
+            // ドラッグしている画像
+            var drgImg = deck.getDisplayImage(stock_upturned[0]);
+            
+            // 追加
+            console.log($(this).parent());
+            $(this).parent().append('<a class="' + cls + ' droppable" href="#"><img src="' + drgImg + '" class="img-fluid shadow-sm bg-white rounded" /></a>');
+            
+            // todo: 追加したa要素をdroppableにする　APIを調べないといけないかも
+            // todo: もとのdroppableを削除
+            
+            // 山から1枚減らす
+            stock_upturned.shift();
+            // 再表示
+            $('#stock_upturned').attr('src',deck.getDisplayImage(stock_upturned[0]));
+
         }
     });
 });
