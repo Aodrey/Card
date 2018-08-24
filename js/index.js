@@ -118,27 +118,35 @@ $(document).ready(function(){
     });
     $( ".pile .droppable" ).droppable({
         drop: function( event, ui ) {
-
             isDropped = true;  // ドロップが成功したことを示すフラグ
-            
+
             // 追加するクラス名を取得（最初に指定したクラス名を数値として取得）
             var cls = Number($(this).attr('class').split(' ')[0]);
             cls++;
             // ドラッグしている画像
             var drgImg = deck.getDisplayImage(stock_upturned[0]);
-            
+
             // 追加
-            console.log($(this).parent());
             $(this).parent().append('<a class="' + cls + ' droppable" href="#"><img src="' + drgImg + '" class="img-fluid shadow-sm bg-white rounded" /></a>');
-            
-            // todo: 追加したa要素をdroppableにする　APIを調べないといけないかも
-            // todo: もとのdroppableを削除
-            
+
             // 山から1枚減らす
             stock_upturned.shift();
             // 再表示
             $('#stock_upturned').attr('src',deck.getDisplayImage(stock_upturned[0]));
+            
+            // 追加したa要素をdroppableにする
+            console.log($( "."+cls ));
+            $( "."+cls ).droppable({
+                drop: function( event, ui ) {
+                    console.log($(this));
+                }
+            });
+            
+            $( "."+cls ).droppable( "enable" );
+            // もとのdroppableを削除
+            $( this ).droppable( "destroy" );
 
         }
     });
+
 });
