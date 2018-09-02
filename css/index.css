@@ -2,75 +2,20 @@
 div.pile>div.row>div.col {
     position:relative;
 }
-div.pile #pile1>a>img,
-div.pile #pile2>a:img,
-div.pile #pile3>a:img,
-div.pile #pile4>a:img,
-div.pile #pile5>a:img,
-div.pile #pile6>a:img {
+div.pile #pile1>img,
+div.pile #pile2>img,
+div.pile #pile3>img,
+div.pile #pile4>img,
+div.pile #pile5>img,
+div.pile #pile6>img {
     background-color:white;
 }
-div.pile #pile1>a:nth-child(1),
-div.pile #pile2>a:nth-child(1),
-div.pile #pile3>a:nth-child(1),
-div.pile #pile4>a:nth-child(1),
-div.pile #pile5>a:nth-child(1),
-div.pile #pile6>a:nth-child(1) {
-    border:solid;
+
+div.base img#stock_upturned_fw {
     position:relative;
 }
-div.pile #pile1>a:nth-child(2),
-div.pile #pile2>a:nth-child(2),
-div.pile #pile3>a:nth-child(2),
-div.pile #pile4>a:nth-child(2),
-div.pile #pile5>a:nth-child(2),
-div.pile #pile6>a:nth-child(2) {
+div.base img#stock_upturned_nx {
     position:absolute;
-    top:30%;
+    top:0;
+    left:0;
 }
-div.pile #pile1>a:nth-child(3),
-div.pile #pile2>a:nth-child(3),
-div.pile #pile3>a:nth-child(3),
-div.pile #pile4>a:nth-child(3),
-div.pile #pile5>a:nth-child(3),
-div.pile #pile6>a:nth-child(3) {
-    position:absolute;
-    top:60%;
-}
-div.pile #pile1>a:nth-child(4), 
-div.pile #pile2>a:nth-child(4), 
-div.pile #pile3>a:nth-child(4), 
-div.pile #pile4>a:nth-child(4), 
-div.pile #pile5>a:nth-child(4), 
-div.pile #pile6>a:nth-child(4) {
-    position:absolute;
-    top:90%;
-}
-div.pile #pile1>a:nth-child(5),
-div.pile #pile2>a:nth-child(5),
-div.pile #pile3>a:nth-child(5),
-div.pile #pile4>a:nth-child(5),
-div.pile #pile5>a:nth-child(5),
-div.pile #pile6>a:nth-child(5) {
-    position:absolute;
-    top:120%;
-}
-div.pile #pile1>a:nth-child(6),
-div.pile #pile2>a:nth-child(6),
-div.pile #pile3>a:nth-child(6),
-div.pile #pile4>a:nth-child(6),
-div.pile #pile5>a:nth-child(6),
-div.pile #pile6>a:nth-child(6) {
-    position:absolute;
-    top:150%;
-}
-div.pile #pile1>a:nth-child(7),
-div.pile #pile2>a:nth-child(7),
-div.pile #pile3>a:nth-child(7),
-div.pile #pile4>a:nth-child(7),
-div.pile #pile5>a:nth-child(7),
-div.pile #pile6>a:nth-child(7) {
-    position:absolute;
-    top:180%;
-}
-

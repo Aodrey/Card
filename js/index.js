@@ -63,12 +63,46 @@ $(document).ready(function(){
         var pileilength = Object.keys(pilei).length;
         for (var j = 0; j < pileilength; j++){
             if (pilei[j] != undefined) {
-                $('#pile'+i+' a.'+j+' img').attr('src',deck.getDisplayImage(pilei[j]));  
+                $('#pile'+i+' img.'+j).attr('src',deck.getDisplayImage(pilei[j]));  
             }
 
         }
     }
     
+    // 位置調整
+    var resetStockPosition = function() {
+        // stockの位置調整
+        var fw = $('div.base img#stock_upturned_fw');
+        fw.css({'position':'relative'});
+        $('div.base img#stock_upturned_nx')          
+            .css({'position':'absolute','top':fw.position().top,'left':fw.position().left,'width':fw.width(),'height':fw.height()});
+        
+    }
+    var resetPilePosition = function() {
+        // pileの位置調整
+        for (var i = 0; i<7; i++) {
+            var pile1 = $('div.pile #pile'+i+'>img:nth-child(1)');
+            pile1.css({'position':'relative'});
+            var width = pile1.width();
+            var height = pile1.height();
+            var position = pile1.position();
+            $('div.pile #pile'+i+'>img:nth-child(2)')
+                .css({'position':'absolute','top':height*0.3,'left':position.left,'width':width,'height':height});
+            $('div.pile #pile'+i+'>img:nth-child(3)')
+                .css({'position':'absolute','top':height*0.6,'left':position.left,'width':width,'height':height});
+            $('div.pile #pile'+i+'>img:nth-child(4)')
+                .css({'position':'absolute','top':height*0.9,'left':position.left,'width':width,'height':height});
+            $('div.pile #pile'+i+'>img:nth-child(5)')
+                .css({'position':'absolute','top':height*1.2,'left':position.left,'width':width,'height':height});
+            $('div.pile #pile'+i+'>img:nth-child(6)')
+                .css({'position':'absolute','top':height*1.5,'left':position.left,'width':width,'height':height});
+            $('div.pile #pile'+i+'>img:nth-child(7)')
+                .css({'position':'absolute','top':height*1.8,'left':position.left,'width':width,'height':height});
+        }
+    };
+    resetStockPosition();
+    resetPilePosition();
+
 
     // クリック
     $("#stock_downturned").click(function(){
@@ -85,7 +119,8 @@ $(document).ready(function(){
 
         // 表示
         $('#stock_downturned').attr('src',deck.getDisplayImage(stock_downturned[0]));
-        $('#stock_upturned').attr('src',deck.getDisplayImage(stock_upturned[0]));
+        $('#stock_upturned_fw').attr('src',deck.getDisplayImage(stock_upturned[0]));
+        $('#stock_upturned_nx').attr('src',deck.getDisplayImage(stock_upturned[1]));
     });
     
     // ドラッグ・ドロップ
@@ -113,29 +148,38 @@ $(document).ready(function(){
             // 山から1枚減らす
             stock_upturned.shift();
             // 再表示
-            $('#stock_upturned').attr('src',deck.getDisplayImage(stock_upturned[0]));
+            $('#stock_upturned_fw').attr('src',deck.getDisplayImage(stock_upturned[0]));
+            $('#stock_upturned_nx').attr('src',deck.getDisplayImage(stock_upturned[1]));
+            
+            // 位置調整
+            resetStockPosition();
         }
     });
     $( ".pile .droppable" ).droppable({
         drop: function( event, ui ) {
-            console.log($(this).find("a:last"));
             isDropped = true;  // ドロップが成功したことを示すフラグ
-
-            // 追加するクラス名を取得
-            var cls = Number($(this).find("a:last"));
+            
+            // 追加する要素のクラス名の1つ目を数値として取得
+            var cls = Number($(this).find("img:last").attr("class").split(" ")[0]);
+            
+            // 次のクラス名
             cls++;
+            
             // ドラッグしている画像
             var drgImg = deck.getDisplayImage(stock_upturned[0]);
 
             // 追加
-            $(this).append('<a class="' + cls + '" href="#"><img src="' + drgImg + '" class="img-fluid shadow-sm bg-white rounded" /></a>');
+            $(this).append('<img src="' + drgImg + '" class="' + cls + ' img-fluid shadow-sm bg-white rounded" />');
 
             // 山から1枚減らす
             stock_upturned.shift();
             // 再表示
-            $('#stock_upturned').attr('src',deck.getDisplayImage(stock_upturned[0]));
+            $('#stock_upturned_fw').attr('src',deck.getDisplayImage(stock_upturned[0]));
+            $('#stock_upturned_nx').attr('src',deck.getDisplayImage(stock_upturned[1]));
             
-
+            // 位置調整
+            resetStockPosition();
+            resetPilePosition();
         }
     });
 
